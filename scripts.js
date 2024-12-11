@@ -36,7 +36,13 @@ function calculateAnswer() {
         case '+': answer = firstNumber + secondNumber; break;
         case '-': answer = firstNumber - secondNumber; break;
         case 'x': answer = firstNumber * secondNumber; break;
-        case '/': answer = firstNumber / secondNumber; break;
+        case '/': 
+            if (secondNumber === 0) {
+                alert("Dalyba iš 0 yra negalima!");
+                return;
+            }
+            answer = firstNumber / secondNumber; 
+            break;
     }
 }
 
