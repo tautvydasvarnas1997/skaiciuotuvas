@@ -32,3 +32,11 @@ function calculateAnswer() {
         case '/': answer = firstNumber / secondNumber; break;
     }
 }
+
+function onCleanClick() {
+    firstNumber = 0;
+    secondNumber = 0;
+    action = '+';
+    answer = 0;
+    input.value = '';
+}
