@@ -18,15 +18,16 @@ function onActionClick(clickedAction) {
 }
 
 function onCountClick() {
-    let splitted = input.value.split(' ');
-    firstNumber = parseInt(splitted[0]);
+    let sanitizedInput = input.value.replace(/,/g, '.');
+    let splitted = sanitizedInput.split(' ');
+    firstNumber = parseFloat(splitted[0]);
     action = splitted[1];
-    secondNumber = parseInt(splitted[2]);
+    secondNumber = parseFloat(splitted[2]);
 
     calculateAnswer();
-    input.value = answer;
+    input.value = answer.toString().replace('.', ',');
 
-    calculationSpan.innerText = `${firstNumber} ${action} ${secondNumber}`;
+    calculationSpan.innerText = `${firstNumber.toString().replace('.', ',')} ${action} ${secondNumber.toString().replace('.', ',')}`;
 
     addToHistory();
 }
@@ -57,10 +58,10 @@ function onCleanClick() {
 
 function addToHistory() {
     let historyItem = {
-        firstNumber,
+        firstNumber: firstNumber.toString().replace('.', ','),
         action,
-        secondNumber,
-        answer
+        secondNumber: secondNumber.toString().replace('.', ','),
+        answer: answer.toString().replace('.', ',')
     };
     
     history.push(historyItem);
