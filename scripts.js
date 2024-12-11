@@ -18,14 +18,14 @@ function onActionClick(clickedAction) {
 }
 
 function onCountClick() {
-    let sanitizedInput = input.value.replace(/,/g, '.');
+    let sanitizedInput = input.value.replace(/,/g, '.'); // Pakeisti kablelį į tašką
     let splitted = sanitizedInput.split(' ');
-    firstNumber = parseFloat(splitted[0]);
+    firstNumber = parseFloat(splitted[0]); // Naudoti parseFloat vietoj parseInt
     action = splitted[1];
     secondNumber = parseFloat(splitted[2]);
 
     calculateAnswer();
-    input.value = answer.toString().replace('.', ',');
+    input.value = answer.toString().replace('.', ','); // Rezultatą rodyti su kableliu
 
     calculationSpan.innerText = `${firstNumber.toString().replace('.', ',')} ${action} ${secondNumber.toString().replace('.', ',')}`;
 
@@ -75,10 +75,16 @@ document.getElementById('show-history').onclick = function() {
     let formatted = history.map(x => `<p>${x.firstNumber} ${x.action} ${x.secondNumber} = ${x.answer}</p>`);
     let historyBlock = document.querySelector('.calculator .history-items');
     historyBlock.innerHTML = formatted.join('');
+    historyBlock.style.display = 'block'; // eilutė, kuri parodo istoriją
 }
 
 document.getElementById('clear-history').onclick = function() {
     history = [];
     let historyBlock = document.querySelector('.calculator .history-items');
     historyBlock.innerHTML = '';
+};
+
+document.getElementById('hide-history').onclick = function() {
+    let historyBlock = document.querySelector('.calculator .history-items');
+    historyBlock.style.display = 'none'; // eilutė, kuri paslepia istoriją
 };
