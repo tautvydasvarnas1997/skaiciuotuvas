@@ -56,7 +56,12 @@ function addToHistory() {
         secondNumber,
         answer
     };
+    
     history.push(historyItem);
+
+    if (history.length > 5) {
+        history.shift();
+    }
 }
 
 document.getElementById('show-history').onclick = function() {
