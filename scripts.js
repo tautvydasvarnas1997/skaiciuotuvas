@@ -64,3 +64,9 @@ document.getElementById('show-history').onclick = function() {
     let historyBlock = document.querySelector('.calculator .history-items');
     historyBlock.innerHTML = formatted.join('');
 }
+
+document.getElementById('clear-history').onclick = function() {
+    history = [];
+    let historyBlock = document.querySelector('.calculator .history-items');
+    historyBlock.innerHTML = '';
+};
