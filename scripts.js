@@ -42,4 +42,5 @@ function onCleanClick() {
     action = '+';
     answer = 0;
     input.value = '';
+    calculationSpan.innerText = '';
 }
